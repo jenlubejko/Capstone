@@ -10,34 +10,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161218054525) do
+ActiveRecord::Schema.define(version: 20161218195032) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "bits", force: :cascade do |t|
-    t.string   "title"
-    t.text     "text"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "comments", id: false, force: :cascade do |t|
-    t.integer  "comment_id"
+  create_table "comments", force: :cascade do |t|
     t.string   "text"
+    t.integer  "post_id"
+    t.integer  "comment_id"
+    t.integer  "foodie_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "followers", id: false, force: :cascade do |t|
+  create_table "followers", force: :cascade do |t|
     t.integer  "follower_id"
     t.integer  "followee_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
 
-  create_table "foodies", id: false, force: :cascade do |t|
-    t.integer  "user_id"
+  create_table "foodies", force: :cascade do |t|
     t.string   "email"
     t.string   "name"
     t.string   "password_digest"
@@ -45,23 +39,22 @@ ActiveRecord::Schema.define(version: 20161218054525) do
     t.datetime "updated_at",      null: false
   end
 
-  create_table "postings", force: :cascade do |t|
-    t.string   "title"
-    t.text     "text"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "posts", id: false, force: :cascade do |t|
-    t.integer  "id"
-    t.string   "title"
-    t.text     "text"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "tags", id: false, force: :cascade do |t|
+  create_table "post_tags", force: :cascade do |t|
+    t.integer  "post_id"
     t.integer  "tag_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "posts", force: :cascade do |t|
+    t.string   "title"
+    t.text     "text"
+    t.integer  "foodie_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "tags", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

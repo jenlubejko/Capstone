@@ -1,7 +1,6 @@
 class CreateFoodies < ActiveRecord::Migration[5.0]
   def change
     create_table :foodies do |t|
-      t.integer :user_id
       t.string :email
       t.string :name
       t.string :password_digest

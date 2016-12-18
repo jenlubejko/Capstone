@@ -1,2 +1,0 @@
-class Bit < ApplicationRecord
-end

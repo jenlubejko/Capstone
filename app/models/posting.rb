@@ -1,2 +1,0 @@
-class Posting < ApplicationRecord
-end
