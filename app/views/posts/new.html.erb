@@ -1,0 +1,16 @@
+<h1>New post:</h1>
+<%= form_tag '/posts', method: :post do %>
+  <div>
+    <%= label_tag :title %>
+    <%= text_field_tag :title %>
+  </div>
+  <div>
+    <%= label_tag :text %>
+    <%= text_field_tag :text %>
+  </div>
+    <div>
+    <%= label_tag :foodie_id %>
+    <%= text_field_tag :foodie_id %>
+  </div>
+  <%= submit_tag "Create post!" %>
+<% end %>

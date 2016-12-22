@@ -9,8 +9,8 @@ Rails.application.routes.draw do
   patch '/posts/:id' => 'posts#update'
   delete '/posts/:id' => 'posts#destroy'
 
-  get '/signup' => 'users#new'
-  post '/users' => 'users#create'
+  get '/signup' => 'foodies#new'
+  post '/foodies' => 'foodies#create'
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
   get '/logout' => 'sessions#destroy'

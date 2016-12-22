@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
   def index
+    @posts = Post.all
     render 'index.html.erb'
   end
 
@@ -10,15 +11,12 @@ class PostsController < ApplicationController
 
   def create
     post = Post.new(
-      post.title = params[:title],
-      post.text = params[:text]
+      title: params[:title],
+      text: params[:text],
+      foodie_id: params[:foodie_id]
     )
-    if @post.save
-      flash[:success] = "Post created."
-      redirect_to '/posts/'
-    else 
-      render 'new.html.erb'
-    end
+    post.save
+    render 'create.html.erb'
   end
 
   def show
