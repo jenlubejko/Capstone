@@ -16,7 +16,7 @@ class FoodiesController < ApplicationController
     )
     if foodie.save
       session[:foodie_id] = foodie.id
-      flash[:success] = 'Successfully created account!'
+      flash[:success] = 'You have successfully created an account!'
       redirect_to '/'
     else
       flash[:warning] = 'Invalid email or password!'

@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
     foodie = Foodie.find_by(email: params[:email])
     if foodie && foodie.authenticate(params[:password])
       session[:foodie_id] = foodie.id
-      flash[:success] = 'Successfully logged in!'
+      flash[:success] = 'You have successfully logged in!'
       redirect_to '/'
     else
       flash[:warning] = 'Invalid email or password!'
@@ -17,7 +17,7 @@ class SessionsController < ApplicationController
 
   def destroy
     session[:foodie_id] = nil
-    flash[:success] = 'Successfully logged out!'
+    flash[:success] = 'You have successfully logged out!'
     redirect_to '/login'
   end
 end

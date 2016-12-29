@@ -1,11 +1,15 @@
 class PostsController < ApplicationController
   def index
-    @posts = Post.all
+    sort_attribute = params[:sort]
+    if current_foodie
+      @posts = current_foodie.posts
+    else
+      @posts = []
+    end
     render 'index.html.erb'
   end
 
   def new
-    @posts = Post.new
     render 'new.html.erb'
   end
 
@@ -16,7 +20,7 @@ class PostsController < ApplicationController
       foodie_id: params[:foodie_id]
     )
     post.save
-    render 'create.html.erb'
+    redirect_to "/posts/#{post.id}"
   end
 
   def show
@@ -36,12 +40,8 @@ class PostsController < ApplicationController
     post = Post.find_by(id: post_id)
     post.title = params[:title]
     post.text = params[:text]
-    if post.save
-      flash[:success] = "Post updated!"
-      redirect_to "/posts"
-    else 
-      render 'edit.html.erb'
-    end
+    flash[:success] = "Post updated!"
+    redirect_to "/posts/#{post.id}"
   end
 
   def destroy
