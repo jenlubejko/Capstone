@@ -1,17 +1,5 @@
 <h1>New post:</h1>
 
-<% if @post.errors.any? %>
-  <div id="error_explanation">
-    <h2><%= pluralize(@post.errors.count, "error") %> This post could not be saved!</h2>
- 
-    <ul>
-    <% @post.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-    <% end %>
-    </ul>
-  </div>
-<% end %>
-
 <%= form_tag '/posts', method: :post do %>
   <div>
     <%= label_tag :title %>
@@ -20,10 +8,6 @@
   <div>
     <%= label_tag :text %>
     <%= text_field_tag :text %>
-  </div>
-    <div>
-    <%= label_tag :foodie_id %>
-    <%= text_field_tag :foodie_id %>
   </div>
   <%= submit_tag "Create post!" %>
 <% end %>

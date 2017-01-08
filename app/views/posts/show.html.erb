@@ -1,10 +1,9 @@
 <h3><%= @post.title %></h3>
 <p>
-  Tags:
   <% @post.tags.each do |tag| %>
     <a href="/posts?tag=<%= tag.name %>"><%= tag.name %></a>  
   <% end %>
 </p>
 <p><%= @post.title %></p>
 <p><%= @post.text %></p>
-<a href="/meetings">Back to all meetings</a>
+<a href="/posts">Back to all posts</a>
