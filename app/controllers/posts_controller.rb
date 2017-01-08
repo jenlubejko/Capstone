@@ -16,16 +16,25 @@ class PostsController < ApplicationController
   def create
     post = Post.new(
       title: params[:title],
-      text: params[:text],
-      foodie_id: params[:foodie_id]
+      text: params[:text]
     )
-    post.save
-    redirect_to "/posts/#{post.id}"
+    if @post.save
+      params[:tag_ids].each do |tag_id|
+        post_tag = PostTag.new(post_id: @post.id, tag_id: tag_id)
+        post_tag.save
+      end
+      flash[:success] = "Post created successfully!"
+      redirect_to "/posts/#{@post.id}"
+    else
+      render 'new.html.erb'
+    end
   end
 
   def show
     post_id = params[:id]
     @post = Post.find_by(id: post_id)
+    @comments = @post.comments.all
+    @comment = @post.comments.build
     render 'show.html.erb'
   end
 

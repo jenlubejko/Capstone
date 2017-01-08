@@ -1,9 +1,11 @@
 class FoodiesController < ApplicationController
   def index
+    @foodies = Foodie.all
     render 'index.html.erb'
   end
 
   def new
+    @foodie = current_foodie
     render 'new.html.erb'
   end
 
@@ -17,7 +19,7 @@ class FoodiesController < ApplicationController
     if foodie.save
       session[:foodie_id] = foodie.id
       flash[:success] = 'You have successfully created an account!'
-      redirect_to '/'
+      redirect_to '/posts'
     else
       flash[:warning] = 'Invalid email or password!'
       redirect_to '/signup'

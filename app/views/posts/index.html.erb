@@ -1,5 +1,17 @@
-<h1>Hello world</h1>
-<% @posts.each do |post| %>
-<h2><%= post.title =%></h2>
-<p><%= post.text =%></p>
-<% end %>
+<div ng-app="app">
+  <div ng-controller="postsCtrl" ng-init="setup()">
+    <h2>Posts</h2>
+    <a href="/posts/new">Create a new post</a>
+    <br>
+    Search by title: <input ng-model="titleFilter">
+    <div ng-repeat="post in posts | filter: {title: titleFilter}">
+      <h3><a href="/posts/{{ post.id }}">{{ post.title }}</a></h3>
+    </br>
+    <p>Tags:
+      <a ng-repeat="tag in post.tags" href="/posts?tag={{ tag.name }}">{{ tag.name }}</a>  
+    </p>
+    <p>{{ post.title }}</p>
+    <p>{{ post.text }}</p>
+    </div>
+  </div>
+</div>

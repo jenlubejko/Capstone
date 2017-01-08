@@ -1,0 +1,6 @@
+<% @foodies.each do |foodie| %>
+  <% if foodie.name != current_foodie.name %>
+<!--         <%=h user.username %> -->
+        <%= link_to "Add Follower", followers_path(:follower_id => user), :method => :post %>
+  <% end %>
+<% end %>
