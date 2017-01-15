@@ -1,19 +1,55 @@
+<div class="wpc-contactUs-form wpc-contactUs-form-style3">
+  <div class="row">
+    <div class="col-xs-12">
+      <h1>posts!</h1>
+    </div>
+      <div ng-app="app">
+        <div ng-controller="postsCtrl" ng-init="setup()">
+          <a href="/posts/new">create a new post</a>
+          <br>
+          search posts: <input ng-model="textFilter">
+          <div ng-repeat="post in posts | filter: {text: textFilter}">
+            <h2><a href="/posts/{{ post.id }}">{{ post.text }}</a></h2>
+            <h2><a href="/posts/{{ post.id }}">{{ post.address }}</a></h2>
+          </br>
+          <p>Photo:
 
-
-<div ng-app="app">
-  <div ng-controller="postsCtrl" ng-init="setup()">
-    <h2>Posts</h2>
-    <a href="/posts/new">Create a new post</a>
-    <br>
-    Search by title: <input ng-model="titleFilter">
-    <div ng-repeat="post in posts | filter: {title: titleFilter}">
-      <h3><a href="/posts/{{ post.id }}">{{ post.title }}</a></h3>
-    </br>
-    <p>Tags:
-      <a ng-repeat="tag in post.tags" href="/posts?tag={{ tag.name }}">{{ tag.name }}</a>  
-    </p>
-    <p>{{ post.title }}</p>
-    <p>{{ post.text }}</p>
+          </p>        
+          <p>Tags:
+            <a ng-repeat="tag in post.tags" href="/posts?tag={{ tag.name }}">{{ tag.name }}</a>  
+          </p>
+          <p>Comments:
+            <a ng-repeat="comment in post.comments" href="/posts?comment={{ comment.name }}">{{ comment.name }}</a>  
+          </p>
+        </div>
+      </div>
     </div>
   </div>
 </div>
+
+<style>
+    #map {
+      height: 400px;
+      width: 100%;
+     }
+</style>
+
+    <h3>My Google Maps Demo</h3>
+    <div id="map"></div>
+    <script>
+      function initMap() {
+        var uluru = {lat: -25.363, lng: 131.044};
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 4,
+          center: uluru
+        });
+        var marker = new google.maps.Marker({
+          position: uluru,
+          map: map
+        });
+      }
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBXlL7OV2FfqVY8wkq9Rt-DJg4WoSEodS4&callback=initMap">
+    </script>
+

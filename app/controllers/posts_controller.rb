@@ -15,14 +15,18 @@ class PostsController < ApplicationController
 
   def create
     post = Post.new(
-      title: params[:title],
-      text: params[:text]
+      text: params[:text],
+      address: params[:address]
     )
     if @post.save
+      image = Image.new(
+        url: params[:image],
+        post_id: @post.id
+      )
+      image.save
       params[:tag_ids].each do |tag_id|
         post_tag = PostTag.new(post_id: @post.id, tag_id: tag_id)
         post_tag.save
-      end
       flash[:success] = "Post created successfully!"
       redirect_to "/posts/#{@post.id}"
     else

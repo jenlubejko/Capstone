@@ -1,12 +1,17 @@
-<h1>Edit Post</h1>
+<div class="wpc-contactUs-form wpc-contactUs-form-style3">
+  <div class="row">
+    <div class="col-xs-12">
+      <h1>edit post!</h1>
+    </div>
+
 <%= form_tag "/posts/#{@post.id}", method: :patch do %>
-  <div class="form-group">
-    <%= label_tag :title %>
-    <%= text_field_tag :title, @post.title, class: 'form-control' %>
+  <div>
+    <%= text_field_tag :text, @post.text, class: 'u-footer-form__input' %>
   </div>
-  <div class="form-group">
-    <%= label_tag :text %>
-    <%= text_field_tag :text, @post.text, class: 'form-control' %>
+  <div>
+    <%= text_field_tag :text, @post.address, class: 'u-footer-form__input' %>
   </div>
-  <%= submit_tag "Edit post", class: "btn btn-primary" %>
+  <div class="wpc-contactUs-button">
+    <button class="u-footer-form__btn u-btn u-btn--small u-btn--grey u-btn--hover-grey">submit</button>
+  </div>
 <% end %>

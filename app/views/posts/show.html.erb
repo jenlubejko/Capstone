@@ -1,9 +1,24 @@
-<h3><%= @post.title %></h3>
-<p>
-  <% @post.tags.each do |tag| %>
-    <a href="/posts?tag=<%= tag.name %>"><%= tag.name %></a>  
-  <% end %>
-</p>
-<p><%= @post.title %></p>
-<p><%= @post.text %></p>
-<a href="/posts">Back to all posts</a>
+<div class="wpc-contactUs-form wpc-contactUs-form-style3">
+  <div class="row">
+    <div class="col-xs-12">
+      <h1><%= @post.text%></h1>
+      <h2>Address:<%= @post.address%></h2>
+    </div>
+  </div>
+  <p>
+    <% @post.images.each do |image| %>
+    <img src="<%= image.url %>" alt="<%= @post.text %>" class="img-responsive">
+    <% end %>
+  </p>
+  <p>
+    <% @post.tags.each do |tag| %>
+      <a href="/posts?tag=<%= tag.name %>"><%= tag.name %></a>  
+    <% end %>
+  </p>
+  <%= link_to "Add Comment", new_comment_path(post_id: @post.id) %>
+  <br>
+  <div class="wpc-contactUs-button">
+    <a href='/posts'>back to all posts</a>
+  </div>
+  </br>
+</div>
