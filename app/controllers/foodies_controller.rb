@@ -25,4 +25,16 @@ class FoodiesController < ApplicationController
       redirect_to '/signup'
     end
   end
+
+  def followers
+    @foodie = Foodie.find(params[:id])
+    @users = @user.followers.paginate(page: params[:page])
+    render 'show_followers.html.erb'
+  end
+
+  def followees
+    @foodie = Foodie.find(params[:id])
+    @users = @user.followers.paginate(page: params[:page])
+    render 'show_followers.html.erb'
+  end
 end

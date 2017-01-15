@@ -2,23 +2,35 @@
   <div class="row">
     <div class="col-xs-12">
       <h1><%= @post.text%></h1>
-      <h2>Address:<%= @post.address%></h2>
-    </div>
-  </div>
-  <p>
-    <% @post.images.each do |image| %>
-    <img src="<%= image.url %>" alt="<%= @post.text %>" class="img-responsive">
-    <% end %>
-  </p>
-  <p>
+      <h2>Address: <%= @post.address%></h2>
+  
+  <br>
+  
+  <p>Tags:
     <% @post.tags.each do |tag| %>
       <a href="/posts?tag=<%= tag.name %>"><%= tag.name %></a>  
     <% end %>
   </p>
-  <%= link_to "Add Comment", new_comment_path(post_id: @post.id) %>
+  
   <br>
+  
+  <p>Image:
+    <% @post.images.each do |image| %>
+    <img src="<%= image.url %>" alt="no image for this post">
+    <% end %>
+  </p>
+  
+<br> 
   <div class="wpc-contactUs-button">
     <a href='/posts'>back to all posts</a>
   </div>
-  </br>
+  <div>
+  <%= link_to "edit post", "/posts/#{@post.id}/edit" %>
+  </div>
+  <div>
+  <%= link_to "delete post", "/posts/#{@post.id}", method: :delete %>
+  </div>
+
+    </div> 
+  </div>
 </div>

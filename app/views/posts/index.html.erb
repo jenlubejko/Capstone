@@ -1,32 +1,40 @@
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=drawing"></script>
+ -->
 <div class="wpc-contactUs-form wpc-contactUs-form-style3">
   <div class="row">
     <div class="col-xs-12">
       <h1>posts!</h1>
+    <br>
+    </br>
     </div>
       <div ng-app="app">
         <div ng-controller="postsCtrl" ng-init="setup()">
           <a href="/posts/new">create a new post</a>
           <br>
-          search posts: <input ng-model="textFilter">
+          <p>search posts: <input ng-model="textFilter"></p>
           <div ng-repeat="post in posts | filter: {text: textFilter}">
-            <h2><a href="/posts/{{ post.id }}">{{ post.text }}</a></h2>
-            <h2><a href="/posts/{{ post.id }}">{{ post.address }}</a></h2>
-          </br>
-          <p>Photo:
+            <div>
+            <h1><a href="/posts/{{ post.id }}">{{ post.text }}</a></h1>
+            </div>
+            <p>address: <a href="/posts/{{ post.id }}">{{ post.address }}</a></p>
 
-          </p>        
-          <p>Tags:
-            <a ng-repeat="tag in post.tags" href="/posts?tag={{ tag.name }}">{{ tag.name }}</a>  
-          </p>
-          <p>Comments:
-            <a ng-repeat="comment in post.comments" href="/posts?comment={{ comment.name }}">{{ comment.name }}</a>  
-          </p>
+<!--     <div id="googleMap" style="height:380px;"></div> -->
+
+<!--             <p>Image:
+              <a ng-repeat="image in post.images" href="/posts?image={{ image.url }}">{{ image.url }}</a>  
+            </p>        
+            <p>Tags:
+              <a ng-repeat="tag in post.tags" href="/posts?tag={{ tag.name }}">{{ tag.name }}</a>  
+            </p>
+            <p>Comments:
+              <a ng-repeat="comment in post.comments" href="/posts?comment={{ comment.name }}">{{ comment.name }}</a>  --> 
+
         </div>
       </div>
     </div>
   </div>
 </div>
-
+<!-- 
 <style>
     #map {
       height: 400px;
@@ -34,7 +42,7 @@
      }
 </style>
 
-    <h3>My Google Maps Demo</h3>
+    <h3>map</h3>
     <div id="map"></div>
     <script>
       function initMap() {
@@ -52,4 +60,3 @@
     <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBXlL7OV2FfqVY8wkq9Rt-DJg4WoSEodS4&callback=initMap">
     </script>
-
