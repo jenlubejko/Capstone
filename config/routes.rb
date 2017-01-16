@@ -8,12 +8,13 @@ Rails.application.routes.draw do
   patch '/posts/:id' => 'posts#update'
   delete '/posts/:id' => 'posts#destroy'
 
+  get 'foodies' => 'foodies#index'
   get '/foodies/:id/following' => 'followees#show' 
   get '/foodies/:id/followees' => 'followers#show'
 
-  # get '/posts/:post_id/comments => 'comments#index'
-  # post '/posts/:post_id/comments => 'comments#create'
-
+  resources :posts do
+    resources :comments
+  end
 
   get '/signup' => 'foodies#new'
   post '/foodies' => 'foodies#create'

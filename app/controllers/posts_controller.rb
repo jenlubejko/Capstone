@@ -6,6 +6,10 @@ class PostsController < ApplicationController
     render 'index.html.erb'
   end
 
+  def new
+    @comment = Comment.new(post_id: params[:post_id])
+  end
+
   def create
     @post = Post.new(
       foodie_id: current_foodie.id,
