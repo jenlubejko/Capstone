@@ -36,7 +36,8 @@ class PostsController < ApplicationController
   def show
     post_id = params[:id]
     @post = Post.find_by(id: post_id)
-    @comments = Comment.where(post_id: @post).order("created_at DESC")
+    @comments = Comment.where(post_id: @post.id).order("created_at DESC")
+    @comment = Comment.new
     render 'show.html.erb'
   end
 

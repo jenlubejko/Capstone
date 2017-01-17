@@ -16,18 +16,20 @@
             </div>
             <p>address: <a href="/posts/{{ post.id }}">{{ post.address }}</a></p>
 
-
-<!--             <p>Image:
-              <a ng-repeat="image in post.images" href="/posts?image={{ image.url }}">{{ image.url }}</a>  
-            </p>        
-            <p>Tags:
-              <a ng-repeat="tag in post.tags" href="/posts?tag={{ tag.name }}">{{ tag.name }}</a>  
-            </p>
-            <p>Comments:
-              <a ng-repeat="comment in post.comments" href="/posts?comment={{ comment.name }}">{{ comment.name }}</a>  --> 
-
         </div>
       </div>
     </div>
   </div>
 </div>
+
+<h3>your locations of free food</h3>
+    <div id="map"></div>
+    <style>
+       #map {
+        height: 400px;
+        width: 100%;
+       }
+    </style>    
+<script>
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=drawing" async defer></script>

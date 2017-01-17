@@ -1,13 +1,12 @@
-<%= form_for([@post, @post.comments.build]) do |f| %>
-  <div class="field">
-    <%= f.label :commenter %><br />
-    <%= f.text_field :foodie_id %>
+<%= form_for([@post, @comment]) do |f| %>
+  <div class="u-contact__wrap">
+    <%= f.text_area(:text, class: "u-contact__text u-contact__text--full-border", placeholder: "your comment") %>
+    <%= f.hidden_field(:post_id, value: @post.id) %>
   </div>
-  <div class="field">
-    <%= f.label :body %><br />
-    <%= f.text_area :body %>
-  </div>
-  <div class="actions">
+
+  <br />
+  
+  <div class="wpc-contactUs-button")">
     <%= f.submit %>
   </div>
 <% end %>
