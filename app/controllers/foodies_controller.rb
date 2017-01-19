@@ -1,4 +1,6 @@
 class FoodiesController < ApplicationController
+  before_action :authenticate_user!
+
   def index
     @foodies = Foodie.all
     render 'index.html.erb'
@@ -26,15 +28,31 @@ class FoodiesController < ApplicationController
     end
   end
 
+  def show
+    foodie_id = params[:id]
+    @foodie = Foodie.find_by(id: foodie_id)
+    render 'show.html.erb'
+  end
+
   def followers
     @foodie = Foodie.find(params[:id])
-    @users = @user.followers.paginate(page: params[:page])
     render 'show_followers.html.erb'
   end
 
-  def followees
-    @foodie = Foodie.find(params[:id])
-    @users = @user.followers.paginate(page: params[:page])
-    render 'show_followers.html.erb'
+  # def followees
+  #   @foodie = Foodie.find(params[:id])
+  #   render 'show_followers.html.erb'
+  # end
+
+  def follow
+    following << other_foodie
+  end
+
+  def unfollow
+    following.delete(other_foodie)
+  end
+
+  def following?
+    following.include?(other_foodie)
   end
 end

@@ -1,19 +1,15 @@
 class FollowersController < ApplicationController
+  before_action :authenticate_user!
+
   def create
-    @follower = current_foodie.followers.build(:follower_id => params[:follower_id])
-    if @follower.save
-      flash[:notice] = "Added follower."
-      redirect_to '/posts'
-    else
-      flash[:error] = "An error occurred when adding this follower."
-      redirect_to '/posts'
-    end
+    @follower = Foodie.find(params[:foodie_id])
+    current_foodie.follow(@foodie)
+    redirect_to '/followers/show_followers.html.erb'
   end
-  
+
   def destroy
-    @follower = current_foodie.followers.find(params[:follower_id])
-    @follower.destroy
-    flash[:notice] = "You have successfully deleted this follower."
-    redirect_to '/posts'
+    @follower = Follower.find_by(params[:id]).followed
+    current_foodie.unfollow(@follower)
+    redirect_to '/followers/show_followers.html.erb'
   end
 end

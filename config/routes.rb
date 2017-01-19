@@ -8,19 +8,17 @@ Rails.application.routes.draw do
   patch '/posts/:id' => 'posts#update'
   delete '/posts/:id' => 'posts#destroy'
 
-  get 'foodies' => 'foodies#index'
-  get '/foodies/:id/following' => 'followees#show' 
-  get '/foodies/:id/followees' => 'followers#show'
-
-  resources :posts do
-    resources :comments
-  end
-
+  get '/foodies' => 'foodies#index'
+  
   get '/signup' => 'foodies#new'
   post '/foodies' => 'foodies#create'
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
   get '/logout' => 'sessions#destroy'
+
+  resources :posts do
+    resources :comments
+  end
 
   namespace :api do
     namespace :v1 do

@@ -1,0 +1,22 @@
+<div class="wpc-contactUs-form wpc-contactUs-form-style3">
+  <div class="row">
+    <div class="col-xs-12">
+      <h1>Foodie name:<%= @foodie.name%></h1>
+      <h4>Email: <%= @foodie.email%></h4>
+
+<br />
+      
+#code for foodie's posts
+  
+<div>
+  <%= render "foodies/_follow.html.erb" %>
+  <%= render "foodies/_unfollow.html.erb" %>
+</div>
+
+<div>
+  <a href='/foodies'>back to all foodies</a>
+</div>
+
+    </div> 
+  </div>
+</div>

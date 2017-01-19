@@ -1070,7 +1070,7 @@
 
     if ($(".type-element").length) {
         $(".type-element").typed({
-            strings: ["Creation.", "Agency.", "Web design."],
+            strings: ["pizza.", "cookies.", "brownies."],
             typeSpeed: 150, // type Speed
             backSpeed: 150, // delete Speed
             startDelay: 0, // delay before type
@@ -1084,7 +1084,7 @@
     }
     if ($(".type-element2 h2").length) {
         $(".type-element2 h2 b").typed({
-            strings: ["Agency.", "Creation.", "Web design."],
+            strings: ["pizza.", "cookies.", "brownies."],
             typeSpeed: 150, // скорость набора
             backSpeed: 150, // скорость удаления текста
             startDelay: 0, // изначальная задержка перед набором
@@ -1150,6 +1150,10 @@
                 before: function() {},
                 removed: function() {},
                 controlNav: true,
+
+
+
+                
                 directionNav: false
             });
         })
