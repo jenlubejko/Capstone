@@ -4,4 +4,6 @@
 <div>
   <p><%= comment.text %></p>
 </div>
-<%= link_to "delete comment", "/posts/#{@post.id}/comments/#{comment.id}", method: :delete %>
+<% if comment.foodie_id == current_foodie.id || comment.post.foodie_id == current_foodie.id %> 
+  <%= link_to "delete comment", "/posts/#{@post.id}/comments/#{comment.id}", method: :delete %>
+<% end %>

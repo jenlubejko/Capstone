@@ -1,0 +1,9 @@
+<div>
+  <h5>tag from <%= tag.foodie.name %> <%= distance_of_time_in_words(Time.now, comment.created_at) %> ago</h5>
+</div>
+<div>
+  <p><%= tag.name %></p>
+</div>
+<% if comment.foodie_id == current_foodie.id || comment.post.foodie_id == current_foodie.id %>
+<%= link_to "remove tag", "/posts/#{@post.id}", method: :delete %>
+<% end %>

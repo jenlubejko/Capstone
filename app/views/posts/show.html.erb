@@ -9,7 +9,7 @@
   
   <h4>Tags:
     <% @post.tags.each do |tag| %>
-      <a href="/posts?tag=<%= tag.name %>"><%= tag.name %></a>  
+      <p><%= tag.name %></p>  
     <% end %>
   </h4>
   
@@ -31,6 +31,14 @@
     <%= render "comments/form" %>
  
 </section>
+
+<br>
+<h5>Add A Tag</h5>
+
+<%= form_for(@post) do |f| %>
+  <%= f.collection_select(:tag_ids, Tag.all, :id, :name, {}, {prompt: "Select Tags", multiple: true}) %>
+  <%= f.submit "Add Tags" %>
+<% end %>
 
 <div>
   <a href='/posts'>back to all posts</a>

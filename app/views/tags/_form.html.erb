@@ -1,0 +1,14 @@
+<%= form_for([@post, @tag]) do |f| %>
+  <div class="u-contact__wrap">
+    <%= f.select :tag_ids, options_from_collection_for_select(Tag.all, :id, :name), multiple: true %>
+  </div>
+    <%= f.hidden_field(:post_id, value: @post.id) %>
+    <%= f.hidden_field(:foodie_id, value: current_foodie.id) %>
+  </div>
+
+  <br />
+  
+  <div class="wpc-contactUs-button")">
+    <%= f.submit %>
+  </div>
+<% end %>
