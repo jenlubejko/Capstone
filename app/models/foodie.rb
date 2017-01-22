@@ -1,6 +1,7 @@
 class Foodie < ApplicationRecord
   has_secure_password
   has_many :posts, dependent: :destroy
+  has_many :comments
   has_many :follower_relationships, class_name: :Follower, foreign_key: :followee_id
   has_many :followers, through: :follower_relationships, source: :follower
 

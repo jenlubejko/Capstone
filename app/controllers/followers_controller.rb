@@ -2,7 +2,7 @@ class FollowersController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @followers = Follower.all
+    @followers = current_foodie.followers
     render 'index.html.erb'
   end
 

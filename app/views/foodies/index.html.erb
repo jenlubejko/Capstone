@@ -9,14 +9,13 @@
         <p>search foodies: <input ng-model="nameFilter" list="names"></p>
 
         <div ng-repeat="foodie in foodies | filter: {name: nameFilter} | orderBy:'name'">
-         <div ng-hide> {{current_foodie.id}} </div>
-          <h3>name: <a href="/foodies/{{ foodie.id }}">{{ foodie.name }}</a></h3>
-
-           
-        </div>
+          <div ng-hide="foodie.isCurrentUser"> {{current_foodie.id}}
+            <h3>
+              name: <a href="/foodies/{{ foodie.id }}">{{ foodie.name }}</a>
+            </h3>
+          </div>
         </div>
       </div>
     </div>
-  
   </div>
 </div>

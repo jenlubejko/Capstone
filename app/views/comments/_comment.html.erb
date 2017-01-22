@@ -1,8 +1,5 @@
-<!-- <h5>Comment from: <%= current_foodie.name %></h5> 
-<br /> -->
-
 <div>
-  <h5>comment from <%= @current_foodie.name %> <%= distance_of_time_in_words(Time.now, comment.created_at) %> ago</h5>
+  <h5>comment from <%= comment.foodie.name %> <%= distance_of_time_in_words(Time.now, comment.created_at) %> ago</h5>
 </div>
 <div>
   <p><%= comment.text %></p>

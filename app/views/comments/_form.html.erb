@@ -2,6 +2,7 @@
   <div class="u-contact__wrap">
     <%= f.text_field(:text, class: "u-contact__text u-contact__text--full-border", placeholder: "your comment") %>
     <%= f.hidden_field(:post_id, value: @post.id) %>
+    <%= f.hidden_field(:foodie_id, value: current_foodie.id) %>
   </div>
 
   <br />
