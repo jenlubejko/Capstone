@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
     if foodie && foodie.authenticate(params[:password])
       session[:foodie_id] = foodie.id
       flash[:success] = 'You have successfully logged in!'
-      redirect_to '/posts'
+      redirect_to '/foodies/followees'
     else
       flash[:warning] = 'Invalid email or password!'
       redirect_to '/login'

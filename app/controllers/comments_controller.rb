@@ -5,6 +5,7 @@ class CommentsController < ApplicationController
     @post = Post.find(params[:post_id])
     @comments = Comment.where(post_id: @post.id).order("created_at DESC")
     @comment = Comment.new(comment_params)
+    # @comment.foodie_id = current_foodie.id
     puts "COMMENT PARAMS"
     p comment_params
     

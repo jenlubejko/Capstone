@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  get '/' => 'foodies#followees'
+  get 'foodies/followees' => 'foodies#followees'
+
   get '/posts' => 'posts#index'
   get '/posts/new' => 'posts#new'
   post '/posts' => 'posts#create'
@@ -11,6 +14,7 @@ Rails.application.routes.draw do
   get '/foodies' => 'foodies#index'
   get '/foodies/:id' => 'foodies#show'
 
+  get '/followers' => 'followers#index'
   post '/followers' => 'followers#create'
   delete '/followers/:id' => 'followers#destroy'
   

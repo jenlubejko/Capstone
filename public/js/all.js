@@ -1070,7 +1070,7 @@
 
     if ($(".type-element").length) {
         $(".type-element").typed({
-            strings: ["pizza.", "cookies.", "brownies."],
+            strings: ["pizza.", "cookies.", "brownies.", "any food."],
             typeSpeed: 150, // type Speed
             backSpeed: 150, // delete Speed
             startDelay: 0, // delay before type
@@ -1084,7 +1084,7 @@
     }
     if ($(".type-element2 h2").length) {
         $(".type-element2 h2 b").typed({
-            strings: ["pizza.", "cookies.", "brownies."],
+            strings: ["pizza.", "cookies.", "brownies.", "any food."],
             typeSpeed: 150, // скорость набора
             backSpeed: 150, // скорость удаления текста
             startDelay: 0, // изначальная задержка перед набором

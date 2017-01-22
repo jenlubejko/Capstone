@@ -34,8 +34,8 @@ class FoodiesController < ApplicationController
     render 'show.html.erb'
   end
 
-  def followers
-    @foodie = Foodie.find(params[:id])
-    render 'show_followers.html.erb'
+  def followees
+    @followees = current_foodie.followees
+    render 'followees.html.erb'
   end
 end
