@@ -1,9 +1,9 @@
-<p>
-<!--   <b>Commenter:</b>
-  <%= comment.foodie_id %>
-</p> -->
- 
-<h3>Comment</h3>
-<p> 
-  <%= comment.text %>
-</p>
+<h5>Comment from: <%= current_foodie.name %></h5> 
+<br />
+<div>
+  <h5><%= comment.text %></h5>
+</div>
+<div>
+  <p>Posted: <%= distance_of_time_in_words(Time.now, comment.created_at) %> ago</p>
+</div>
+<%= link_to "delete comment", "/posts/#{@post.id}/comments/#{comment.id}", method: :delete %>

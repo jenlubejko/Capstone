@@ -3,6 +3,7 @@
     <div class="col-xs-12">
       <h1><%= @post.text%></h1>
       <h2>Address: <%= @post.address%></h2>
+      <p>Posted: <%= distance_of_time_in_words(Time.now, @post.created_at) %> ago</p>
 
 <br />
   

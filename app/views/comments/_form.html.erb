@@ -1,6 +1,6 @@
 <%= form_for([@post, @comment]) do |f| %>
   <div class="u-contact__wrap">
-    <%= f.text_area(:text, class: "u-contact__text u-contact__text--full-border", placeholder: "your comment") %>
+    <%= f.text_field(:text, class: "u-contact__text u-contact__text--full-border", placeholder: "your comment") %>
     <%= f.hidden_field(:post_id, value: @post.id) %>
   </div>
 

@@ -1,4 +1,6 @@
 class CommentsController < ApplicationController
+  before_action :authenticate_user!
+
   def create
     @post = Post.find(params[:post_id])
     @comments = Comment.where(post_id: @post.id).order("created_at DESC")
@@ -16,7 +18,7 @@ class CommentsController < ApplicationController
  
   def destroy
     @post = Post.find(params[:post_id])
-    @comment = @post.comments.find(params[:comment])
+    @comment = @post.comments.find(params[:id])
     @comment.destroy
     redirect_to post_path(@post)
   end
@@ -24,6 +26,6 @@ class CommentsController < ApplicationController
   private
 
   def comment_params
-    params.require(:comment).permit(:text, :post_id, :foodie_id)
+    params.require(:comment).permit(:text, :post_id, :id)
   end
 end

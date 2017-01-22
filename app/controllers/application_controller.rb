@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   def current_foodie
     @current_foodie ||= Foodie.find_by(id: session[:foodie_id]) if session[:foodie_id]
   end
-  helper_method :current_user
+  helper_method :current_foodie
 
   def authenticate_user!
     redirect_to '/login' unless current_foodie

@@ -9,6 +9,10 @@ Rails.application.routes.draw do
   delete '/posts/:id' => 'posts#destroy'
 
   get '/foodies' => 'foodies#index'
+  get '/foodies/:id' => 'foodies#show'
+
+  post '/followers' => 'followers#create'
+  delete '/followers/:id' => 'followers#destroy'
   
   get '/signup' => 'foodies#new'
   post '/foodies' => 'foodies#create'
@@ -23,6 +27,7 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       get '/posts' => 'posts#index'
+      get '/foodies' => 'foodies#index'
     end
   end
 end

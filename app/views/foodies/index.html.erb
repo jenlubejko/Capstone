@@ -1,10 +1,22 @@
-<h1>Foodies:</h1>
+<div class="wpc-contactUs-form wpc-contactUs-form-style3">
+  <div class="row">
+    <div class="col-xs-12">
+      <h1>all foodies!</h1>
+    </div>
+    
+    <div ng-app="app">
+      <div ng-controller="foodiesCtrl" ng-init="setup()">
+        <p>search foodies: <input ng-model="nameFilter" list="names"></p>
 
-<% @foodies.each do |foodie| %>
-  <h3><%= @foodie.name %></h3>
-  <h3><%= @foodie.email %></h3>
-<% end %>
+        <div ng-repeat="foodie in foodies | filter: {name: nameFilter} | orderBy:'name'">
+         <div ng-hide> {{current_foodie.id}} </div>
+          <h3>name: <a href="/foodies/{{ foodie.id }}">{{ foodie.name }}</a></h3>
 
-<% if foodie.name != current_foodie.name %>
-  <%= link_to "Add Follower", "/foodies/_follow.html.erb", method: :post %>
-<% end %> 
+           
+        </div>
+        </div>
+      </div>
+    </div>
+  
+  </div>
+</div>

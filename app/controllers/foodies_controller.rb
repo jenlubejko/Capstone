@@ -38,21 +38,4 @@ class FoodiesController < ApplicationController
     @foodie = Foodie.find(params[:id])
     render 'show_followers.html.erb'
   end
-
-  # def followees
-  #   @foodie = Foodie.find(params[:id])
-  #   render 'show_followers.html.erb'
-  # end
-
-  def follow
-    following << other_foodie
-  end
-
-  def unfollow
-    following.delete(other_foodie)
-  end
-
-  def following?
-    following.include?(other_foodie)
-  end
 end

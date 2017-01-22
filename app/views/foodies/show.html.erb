@@ -1,17 +1,25 @@
 <div class="wpc-contactUs-form wpc-contactUs-form-style3">
   <div class="row">
     <div class="col-xs-12">
-      <h1>Foodie name:<%= @foodie.name%></h1>
+      <h1>Foodie name: <%= @foodie.name%></h1>
       <h4>Email: <%= @foodie.email%></h4>
 
 <br />
-      
-#code for foodie's posts
-  
-<div>
-  <%= render "foodies/_follow.html.erb" %>
-  <%= render "foodies/_unfollow.html.erb" %>
-</div>
+
+  <% if current_foodie.followees.include?(@foodie) %>
+    <% @foodie.posts.each do |post| %>
+        <h2>Post: <a href="/posts/<%=post.id%>"><%= post.text %></a></h2>
+        <h3><%= post.address %></h3>
+    <% end %>
+<br />
+    <!-- <button>Un-Follow</button> -->
+    <%= link_to "Un-Follow", "/followers/#{Follower.find_by(follower_id: current_foodie.id, followee_id: @foodie.id).id}", method: :delete, class: "btn btn-warning" %>
+  <% else %>
+    <!-- <button>Follow</button> -->
+    <%= link_to "Follow", "/followers?foodie_id=#{@foodie.id}", method: :post, class: "btn btn-success" %>
+  <% end %>
+
+<br />
 
 <div>
   <a href='/foodies'>back to all foodies</a>
@@ -20,3 +28,15 @@
     </div> 
   </div>
 </div>
+
+<h3>your locations of free food</h3>
+    <div id="map"></div>
+    <style>
+       #map {
+        height: 400px;
+        width: 100%;
+       }
+    </style>    
+<script>
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=drawing" async defer></script>
