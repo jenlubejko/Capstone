@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  get '/' => 'foodies#followees'
-  get 'foodies/followees' => 'foodies#followees'
+  get '/' => 'followees#index'
+
 
   get '/posts' => 'posts#index'
   get '/posts/new' => 'posts#new'
@@ -32,6 +32,9 @@ Rails.application.routes.draw do
     namespace :v1 do
       get '/posts' => 'posts#index'
       get '/foodies' => 'foodies#index'
+      get '/followees' => 'followees#index'
     end
   end
+
+  mount ActionCable.server => '/cable'
 end

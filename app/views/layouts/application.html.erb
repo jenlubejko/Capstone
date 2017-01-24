@@ -26,85 +26,90 @@
 
 <body class=" animsition   ">
     <!-- ///////////////////////////////////////// -->
-    <header class="u-header u-header--transp-light u-header--black-text">
-        <div class="container no-padd-lg">
-            <div class="row">
-                <div class="col-xs-12">
-                    <div class="u-header__wrap">
-                        <div class="u-header__logo float-right">
-                            <a href="/login" class="table-cell">freefood</a>
-                        </div>
-                        <div class="u-header__nav-icon float-left">
-                            <a href="#" class="table-cell"><i></i></a>
-                        </div>
-                        <div class="u-header__navigation float-left">
-                            <nav>
-                                <% if @current_foodie %>
-                                <ul class="table-cell main-menu">
-                                    <li class="menu-item u-header__megamenu"><a href="/">your feed</a></li>
-                                    <li class="menu-item u-header__megamenu"><a href="/posts">your posts</a></li>
-                                    <li class="menu-item u-header__megamenu"><a href="/followers">your followers</a></li>
-                                    <li class="menu-item u-header__megamenu"><a href="/foodies">all foodies</a></li>
-                                    <li class="menu-item u-header__megamenu"><a href="/logout">logout</a></li>
-                                </ul>
-                                <% else %>
-                                <ul class="table-cell main-menu">
-                                    <li class="menu-item u-header__megamenu"><a href="/signup">signup</a></li>
-                                    <li class="menu-item u-header__megamenu"><a href="/login">login</a></li>
-                                </ul>
-                                <% end %>
-                            </nav>
-                        </div>
+<header class="u-header u-header--transp-light u-header--black-text">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="u-header__wrap">
+                    <div class="u-header__logo float-right">
+                        <a href="/login" class="table-cell">freefood</a>
+                    </div>
+                    <div class="u-header__nav-icon float-left">
+                        <a href="#" class="table-cell"><i></i></a>
+                    </div>
+                    <div class="u-header__navigation float-left">
+                        <nav>
+                            <% if @current_foodie %>
+                            <ul class="table-cell main-menu">
+                                <li class="menu-item u-header__megamenu"><a href="/">your feed</a></li>
+                                <li class="menu-item u-header__megamenu"><a href="/posts">your posts</a></li>
+                                <li class="menu-item u-header__megamenu"><a href="/followers">your followers</a></li>
+                                <li class="menu-item u-header__megamenu"><a href="/foodies">all foodies</a></li>
+                                <li class="menu-item u-header__megamenu"><a href="/logout">logout, <%= @current_foodie.name %></a></li>
+                            </ul>
+                            <% else %>
+                            <ul class="table-cell main-menu">
+                                <li class="menu-item u-header__megamenu"><a href="/signup">signup</a></li>
+                                <li class="menu-item u-header__megamenu"><a href="/login">login</a></li>
+                            </ul>
+                            <% end %>
+                        </nav>
                     </div>
                 </div>
             </div>
         </div>
-
+    </div>
 </header>
+<!-- ///////////////////////////////////////// -->
+<div class="u-start-banner u-start-banner--portfolio u-start-banner--portfolio-grey">
+<div class="u-start-banner__item wpc-bg-block">
+<div class="container no-padd-lg">
+<div class="row">
+<div class="col-xs-12">
+<div class="u-start-banner__heading u-start-banner__heading--portfolio u-start-banner__heading--left">
+                        <h1 class="u-start-banner__title">share <span class="type-element"></span></h1>
+                        <h1 class="u-start-banner__title">share intelligence about free food in your world.</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<%= yield %>
     <!-- ///////////////////////////////////////// -->
+<footer class="u-footer">
+    <div class="u-footer__top">
+        <div class="container no-padd-lg">
+            <div class="row">
+                <div class="col-md-4 col-sm-6 marg-sm-b60">
+                    <div class="u-footer__item">
+                        <h3 class="u-footer__title">about us</h3>
+                        <ul class="u-footer-info marg-lg-b60">
+                            <li>
+                            <h7 class="u-footer-info__title">Founded in 2016 in Chicago, IL by a lover of free food</h7>
+                            </li>
+                        </ul>
 
-<div class="col-md-12">
-<div class="u-section-heading">
-<div class="u-section-heading__header">
-<h1 class="u-start-banner__title">share <span class="type-element"></span></h1>
-<h1 class="u-start-banner__title">share intelligence about free food in your world.</h1>
+                        <h3 class="u-footer__title">follow us</h3>
+                        <ul class="u-footer-soc">
+                            <li>
+                                <a href="#" class="fa fa-facebook"></a>
+                            </li>
+                            <li>
+                                <a href="#" class="fa fa-linkedin"></a>
+                            </li>
+                            <li>
+                                <a href="#" class="fa fa-twitter"></a>
+                            </li>
+                            <li>
+                                <a href="#" class="fa fa-google-plus"></a>
+                            </li>       
+                        </ul>         
 </div>
 </div>
 </div>
 </div>
 </div>
-</div>
-
-    <%= yield %>
-    <!-- ///////////////////////////////////////// -->
-    <footer class="u-footer">
-        <div class="u-footer__top">
-            <div class="container no-padd-lg">
-                <div class="row">
-                    <div class="col-md-4 col-sm-6 marg-sm-b60">
-                        <div class="u-footer__item">
-                            <h3 class="u-footer__title">about us</h3>
-                            <ul class="u-footer-info marg-lg-b60">
-                                <li>
-                                    <h7 class="u-footer-info__title">Founded in 2016 in Chicago, IL by a lover of free food</h7>
-                                </li>
-                            </ul>
-
-<h3 class="u-footer__title">follow us</h3>
-<ul class="u-footer-soc">
-<li>
-<a href="#" class="fa fa-facebook"></a>
-</li>
-<li>
-<a href="#" class="fa fa-linkedin"></a>
-</li>
-<li>
-<a href="#" class="fa fa-twitter"></a>
-</li>
-<li>
-<a href="#" class="fa fa-google-plus"></a>
-</li>
-</ul>         
 </footer>
     <!-- ///////////////////////////////////////// -->
     <script src="/js/jquery-2.1.4.min.js"></script>
