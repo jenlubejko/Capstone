@@ -19,7 +19,7 @@
     </div>
   </div>
 
-<%= form_tag '/posts', method: :post do %>
+<%= form_tag '/posts', method: :post, multipart: true do %>
   <div>
     <%= text_field_tag :text, "", class: 'u-footer-form__input', placeholder: 'enter your text here' %>
   </div>
@@ -27,7 +27,7 @@
     <%= text_field_tag :address, "", class: 'u-footer-form__input', placeholder: 'enter an address here' %>
   </div>
   <div>
-    <%= text_field_tag :image, @post && @post.images.first ? @post.images.first.url : "", class: 'u-footer-form__input', placeholder: 'link an image here' %>
+    <%= file_field_tag :image, accept: 'image/*;capture=camera', class: 'u-footer-form__input', placeholder: 'link an image here' %>
   </div>
   <div>
     <%= select_tag :tag_ids, options_from_collection_for_select(Tag.all, :id, :name), multiple: true %>

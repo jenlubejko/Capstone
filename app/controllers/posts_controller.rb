@@ -11,14 +11,19 @@ class PostsController < ApplicationController
   end
 
   def create
+    response = Unirest.post("http://uploads.im/api?upload", parameters: {file: params[:image]}).body
+    puts "*" * 40
+    p response
+    puts "*" * 40
     @post = Post.new(
       foodie_id: current_foodie.id,
       text: params[:text],
-      address: params[:address]
+      address: params[:address],
+      image_url: response["data"]["img_url"]
     )
     if @post.save
       image = Image.new(
-          url: params[:url],
+          url: response["data"]["img_url"],
           post_id: @post.id
         )
       image.save
@@ -26,6 +31,19 @@ class PostsController < ApplicationController
         post_tag = PostTag.new(post_id: @post.id, tag_id: tag_id)
         post_tag.save
       end
+
+
+
+      ActionCable.server.broadcast 'activity_channel', {
+        id: @post.id,
+        text: @post.text,
+        foodie_id: current_foodie.id,
+        address: @post.address,
+        image: @post.image_url,
+        foodie: current_foodie.name
+      }
+
+
       flash[:success] = "Post created successfully!"
       redirect_to "/posts/#{@post.id}"
     else

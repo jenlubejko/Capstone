@@ -5,23 +5,24 @@
     </div>
   </div>
 
-<%= form_tag '/foodies', method: :post do  %>
+<%= form_for @foodie, url: '/foodies', html: { multipart: true}, method: :post do |f| %>
   <div>
-    <%= text_field_tag :name, "", class: 'u-footer-form__input', placeholder: 'enter your name here' %>
+    <%= f.text_field :name, class: 'u-footer-form__input', placeholder: 'enter your name here' %>
   </div>
   <div>
-    <%= text_field_tag :email, "", class: 'u-footer-form__input', placeholder: 'enter your email address here' %>
+    <%= f.text_field :email, class: 'u-footer-form__input', placeholder: 'enter your email address here' %>
   </div>
   <div>
-    <%= password_field_tag(:password, "", class: "u-footer-form__input", placeholder: "create a password here") %>
+    <%= f.password_field :password, class: "u-footer-form__input", placeholder: "create a password here" %>
   </div>
   <div>
-    <%= password_field_tag(:password_confirmation, "", class: "u-footer-form__input", placeholder: "confirm your password here") %>
+    <%= f.password_field :password_confirmation, class: "u-footer-form__input", placeholder: "confirm your password here" %>
+  </div>
+    <div>
+    <%= f.file_field :avatar %>
   </div>
   <div class="wpc-contactUs-button">
-    <button class="u-footer-form__btn u-btn u-btn--small u-btn--grey u-btn--hover-grey">submit</button>
+    <%= f.submit "Submit", class: "u-footer-form__btn u-btn u-btn--small u-btn--grey u-btn--hover-grey" %>
   </div>
-</form>
-</div>
-
 <% end %>
+</div>

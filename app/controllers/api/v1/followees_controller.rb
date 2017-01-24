@@ -12,16 +12,10 @@ class Api::V1::FolloweesController < ApplicationController
   end
 
   def create
-    @message = Message.create(
-      user_id: current_user.id,
-      body: params[:body]
+    @post = post.create(
+      current_foodie: current_foodie.id,
+      text: params[:text]
     )
-    ActionCable.server.broadcast 'activity_channel', {
-      id: @message.id,
-      name: @message.user.name,
-      body: @message.body,
-      created_at: @message.created_at
-    }
     render 'show.json.jbuilder'
   end
 end

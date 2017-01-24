@@ -1,5 +1,5 @@
 class FoodiesController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: [:new, :create]
 
   def index
     @foodies = Foodie.all
@@ -7,23 +7,16 @@ class FoodiesController < ApplicationController
   end
 
   def new
-    @foodie = current_foodie
+    @foodie = Foodie.new
     render 'new.html.erb'
   end
 
   def create
-    foodie = Foodie.new(
-      name: params[:name],
-      email: params[:email],
-      password: params[:password],
-      password_confirmation: params[:password_confirmation]
-    )
+    foodie = Foodie.new(foodie_params)
     if foodie.save
       session[:foodie_id] = foodie.id
-      flash[:success] = 'You have successfully created an account!'
       redirect_to '/posts'
     else
-      flash[:warning] = 'Invalid email or password!'
       redirect_to '/signup'
     end
   end
@@ -37,5 +30,11 @@ class FoodiesController < ApplicationController
   def followees
     @followees = current_foodie.followees
     render 'followees.html.erb'
+  end
+
+  private
+
+  def foodie_params
+    params.require(:foodie).permit(:name, :email, :password, :password_confirmation, :avatar)
   end
 end

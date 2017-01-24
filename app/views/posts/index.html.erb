@@ -7,42 +7,22 @@
       <br />
 
       <div ng-app="app">
-        <div ng-controller="postsCtrl" ng-init="setup()">
+        <div ng-controller="postsCtrl" ng-init="setup()" id="postsCtrl">
           <a href="/posts/new"><h3>create a new post</h3></a>
           <p>search posts: <input ng-model="textFilter"></p>
 
-          <div ng-repeat="post in posts | filter: {text: textFilter}">
-
-
-<div class="grid-sizer">
-<div class="item branding photo wow fadeInUpBig">
-<div class="item-desc">
-<div class="vertical-align">
-
-            
+          <div ng-repeat="post in posts | filter: {text: textFilter}">            
             <div>
             <h1><a href="/posts/{{ post.id }}">{{ post.text }}</a></h1>
             </div>
             <p>address: <a href="/posts/{{ post.id }}">{{ post.address }}</a></p>
-
-    </div>
-  </div>
-</div>
-        
-    </div>
-  </div>
-</div>
-
+            <p>image: <a href="/posts/{{ post.id }}">{{ post.image_url }}</a></p>
+          </div>
         </div>
       </div>
-
-    </div>
+    </div>      
   </div>
 </div>
-
-<script>
-$( "#postsCtrl" ).hasClass( "izotope-container gutt-col3 white-border" );
-</script>
 
 <h3>your locations of free food</h3>
     <div id="map"></div>

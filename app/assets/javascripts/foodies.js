@@ -1,6 +1,6 @@
 /* global $, google */
-function initializeMap(posts) {
-  console.log('initializeMapIndex', posts);
+function initializeMap(foodies) {
+  console.log('initializeMapIndex', foodies);
   var mapProp = {
     center: new google.maps.LatLng(51.508742,-0.120850),
     zoom: 15,

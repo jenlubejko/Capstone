@@ -9,8 +9,9 @@ App.activity = App.cable.subscriptions.create("ActivityChannel", {
 
   received: function(data) {
     // Called when there's incoming data on the websocket for this channel
-    var $scope = angular.element(document.getElementById('messagesCtrl')).scope(); // get the scope from the angular controller
-    $scope.messages.push(data); // add the new message received from the websocket
+    var $scope = angular.element(document.getElementById('followeesCtrl')).scope(); // get the scope from the angular controller
+    $scope.followees.push(data); // add the new message received from the websocket
     $scope.$apply(); // force angular to refresh
+    console.log('action cable baby', data);
   }
 });
