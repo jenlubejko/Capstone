@@ -2,22 +2,22 @@
   <div class="row">
     <div class="col-xs-12">
       <h1><%= @post.text%></h1>
-      <h2>Address: <%= @post.address%></h2>
+      <h2><%= @post.address%></h2>
       <p>Posted: <%= distance_of_time_in_words(Time.now, @post.created_at) %> ago</p>
 
 <br />
   
-  <h4>Tags:
+  <h4>
     <% @post.tags.each do |tag| %>
-      <p><%= tag.name %></p>  
+      <a href="/posts?tag=<%= tag.name %>"><%= tag.name %></a>  
     <% end %>
   </h4>
   
 <br />
   
-  <h4>Image:
+  <h4>
     <% @post.images.each do |image| %>
-    <img src="<%= @post.image_url %>" alt="no image for this post">
+    <img src="<%= @post.image_url %>">
     <% end %>
   </h4>
   
@@ -43,7 +43,7 @@
 <div>
   <a href='/posts'>back to all posts</a>
 <br />  
-  <%= link_to "edit post", "/posts/#{@post.id}/edit" %>
+<!--   <%= link_to "edit post", "/posts/#{@post.id}/edit" %> -->
 <br />
   <%= link_to "delete post", "/posts/#{@post.id}", method: :delete %>
 </div>

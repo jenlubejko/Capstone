@@ -17,6 +17,7 @@ class FoodiesController < ApplicationController
       session[:foodie_id] = foodie.id
       redirect_to '/posts'
     else
+      p foodie.errors.full_messages
       redirect_to '/signup'
     end
   end

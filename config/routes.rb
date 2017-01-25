@@ -7,8 +7,8 @@ Rails.application.routes.draw do
   get '/posts/new' => 'posts#new'
   post '/posts' => 'posts#create'
   get '/posts/:id' => 'posts#show'
-  get '/posts/:id/edit' => 'posts#edit'
-  patch '/posts/:id' => 'posts#update'
+  # get '/posts/:id/edit' => 'posts#edit'
+  # patch '/posts/:id' => 'posts#update'
   delete '/posts/:id' => 'posts#destroy'
 
   get '/foodies' => 'foodies#index'

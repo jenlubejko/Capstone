@@ -13,4 +13,5 @@ json.array! @posts.each do |post|
   json.address post.address
   json.foodie_id post.foodie_id
   json.foodie post.foodie.name
+  json.avatar post.foodie.avatar
 end

@@ -11,19 +11,21 @@ class PostsController < ApplicationController
   end
 
   def create
-    response = Unirest.post("http://uploads.im/api?upload", parameters: {file: params[:image]}).body
-    puts "*" * 40
-    p response
-    puts "*" * 40
+    if params[:image]
+      response = Unirest.post("http://uploads.im/api?upload", parameters: {file: params[:image]}).body
+      image_url = response["data"]["img_url"]
+    else
+      image_url = "http://www.freefoodphotos.com/imagelibrary/confectionery/candy_fruits.jpg"
+    end
     @post = Post.new(
       foodie_id: current_foodie.id,
       text: params[:text],
       address: params[:address],
-      image_url: response["data"]["img_url"]
+      image_url: image_url
     )
     if @post.save
       image = Image.new(
-          url: response["data"]["img_url"],
+          url: image_url,
           post_id: @post.id
         )
       image.save
@@ -31,8 +33,6 @@ class PostsController < ApplicationController
         post_tag = PostTag.new(post_id: @post.id, tag_id: tag_id)
         post_tag.save
       end
-
-
 
       ActionCable.server.broadcast 'activity_channel', {
         id: @post.id,
@@ -43,8 +43,6 @@ class PostsController < ApplicationController
         foodie: current_foodie.name
       }
 
-
-      flash[:success] = "Post created successfully!"
       redirect_to "/posts/#{@post.id}"
     else
       render 'new.html.erb'
@@ -96,6 +94,6 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:text, :foodie_id, :address, :image, tag_ids: [])
+    params.require(:post).permit(:text, :foodie_id, :address, tag_ids: [])
   end
 end

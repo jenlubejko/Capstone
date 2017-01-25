@@ -11,7 +11,7 @@
           <div ng-repeat="post in followees | filter: followeeFilter"> 
             <h3><a href="/posts/{{ post.id }}">{{ post.text }}</a></h3> 
             <h3><a href="/posts/{{ post.id }}">{{ post.address }}</a></h3> 
-            <h4>by <a href="/foodies/{{ post.foodie_id }}">{{ post.foodie }}</a></h4>
+            <h4>by <a href="/foodies/{{ post.foodie_id }}">{{ post.foodie }}</a></h4> 
           </div>
       </div>
     </div>

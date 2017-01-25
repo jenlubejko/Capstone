@@ -3,7 +3,11 @@
     <div class="col-xs-12">
       <h1>Foodie name: <%= @foodie.name%></h1>
       <h4>Email: <%= @foodie.email%></h4>
-      <%= image_tag @foodie.avatar(:thumb) %>
+      <% if @foodie.avatar.url(:thumb).include?("missing") %>
+        <%= image_tag 'missingfoodie.png', class: "profile-image" %>
+      <% else %>
+        <%= image_tag @foodie.avatar.url(:thumb) %>
+      <% end %>
 
 <br />
 
@@ -26,18 +30,6 @@
   <a href='/foodies'>back to all foodies</a>
 </div>
 
-    </div> 
-  </div>
 </div>
-
-<h3>your locations of free food</h3>
-    <div id="map"></div>
-    <style>
-       #map {
-        height: 400px;
-        width: 100%;
-       }
-    </style>    
-<script>
-</script>
-<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=drawing" async defer></script>
+</div>
+</div>

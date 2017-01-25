@@ -5,7 +5,11 @@
 <% @followers.each do |follower| %>
   <h2><a href="/foodies/<%=follower.id%>"><%= follower.name %></h2>
   <h3><a href="/foodies/<%=follower.id%>"><%= follower.email %></h3>
-  <h3><a href="/foodies/<%=follower.id%>"><%= follower.email %></h3>
+  <% if follower.avatar.url(:thumb).include?("missing") %>
+    <%= image_tag 'missingfoodie.png', class: "profile-image" %>
+  <% else %>
+    <%= image_tag follower.avatar.url(:thumb) %>
+  <% end %>
 <% end %>
 </div>
 </div>

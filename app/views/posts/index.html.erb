@@ -15,11 +15,14 @@
             <div>
             <h1><a href="/posts/{{ post.id }}">{{ post.text }}</a></h1>
             </div>
-            <p>address: <a href="/posts/{{ post.id }}">{{ post.address }}</a></p>
-            <p>image: <a href="/posts/{{ post.id }}">{{ post.image_url }}</a></p>
+<!--             <p>address: <a href="/posts/{{ post.id }}">{{ post.address }}</a></p> -->
+<!--             <p><a href="/posts/{{ post.id }}">{{ post.tags }}</a></p>   -->
+            <img ng-src="{{ post.image }}", style="height: 120px"/>
           </div>
+    
         </div>
       </div>
+
     </div>      
   </div>
 </div>
