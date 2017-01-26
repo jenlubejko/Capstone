@@ -5,47 +5,49 @@
       <h2><%= @post.address%></h2>
       <p>Posted: <%= distance_of_time_in_words(Time.now, @post.created_at) %> ago</p>
 
-<br />
+<br>
   
   <h4>
     <% @post.tags.each do |tag| %>
-      <a href="/posts?tag=<%= tag.name %>"><%= tag.name %></a>  
+      <%= tag.name %></a>  
     <% end %>
   </h4>
   
-<br />
+<br>
   
   <h4>
     <% @post.images.each do |image| %>
-    <img src="<%= @post.image_url %>">
+    <img src="<%= @post.image_url %>", style="height: 200px; width: 150px";>
     <% end %>
   </h4>
   
-<section>
+<br>
 
 <%= render @post.comments %>
 
-<br />
+<br>
  
   <h5>Add a comment:</h5>
     <%= render "comments/form" %>
- 
-</section>
 
 <br>
+
 <h5>Add A Tag</h5>
 
 <%= form_for(@post) do |f| %>
   <%= f.collection_select(:tag_ids, Tag.all, :id, :name, {}, {prompt: "Select Tags", multiple: true}) %>
+<br>
   <%= f.submit "Add Tags" %>
 <% end %>
+<br>
 
-<div>
-  <a href='/posts'>back to all posts</a>
-<br />  
+<div class="wpc-contactUs-button">
+  <a href='/posts' class="u-footer-form__btn u-btn u-btn--small u-btn--grey u-btn--hover-grey">back to all posts</a>
+
 <!--   <%= link_to "edit post", "/posts/#{@post.id}/edit" %> -->
-<br />
-  <%= link_to "delete post", "/posts/#{@post.id}", method: :delete %>
+<br>
+<br>
+  <%= link_to "delete post", "/posts/#{@post.id}", :class => "u-footer-form__btn u-btn u-btn--small u-btn--grey u-btn--hover-grey", method: :delete %>
 </div>
 
     </div> 

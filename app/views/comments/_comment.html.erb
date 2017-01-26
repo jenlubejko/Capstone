@@ -1,9 +1,12 @@
-<div>
-  <h5>comment from <%= comment.foodie.name %> <%= distance_of_time_in_words(Time.now, comment.created_at) %> ago</h5>
+<div class="post-comment">
+  <div>
+    <h4>comment from <%= comment.foodie.name %> <%= distance_of_time_in_words(Time.now, comment.created_at) %> ago</h4>
+  </div>
+  <br>
+  <div>
+    <p><%= comment.text %></p>
+  </div>
+  <% if comment.foodie_id == current_foodie.id || comment.post.foodie_id == current_foodie.id %> 
+    <%= link_to "delete comment", "/posts/#{@post.id}/comments/#{comment.id}", method: :delete %>
+  <% end %>
 </div>
-<div>
-  <p><%= comment.text %></p>
-</div>
-<% if comment.foodie_id == current_foodie.id || comment.post.foodie_id == current_foodie.id %> 
-  <%= link_to "delete comment", "/posts/#{@post.id}/comments/#{comment.id}", method: :delete %>
-<% end %>

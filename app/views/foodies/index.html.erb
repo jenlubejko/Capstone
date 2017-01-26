@@ -1,5 +1,6 @@
+<div class="jumbotron">
 <div class="wpc-contactUs-form wpc-contactUs-form-style3">
-  <div class="row">
+
 
     <div class="col-xs-12">
       <h1>all foodies!</h1>
@@ -7,19 +8,24 @@
 
 <div ng-app="app">
   <div ng-controller="foodiesCtrl" ng-init="setup()">
-  <p>search foodies: <input ng-model="nameFilter" list="names"></p>
-    <div ng-repeat="foodie in foodies | filter: {name: nameFilter} | orderBy:'name'">
-    <div ng-hide="foodie.isCurrentUser"> {{current_foodie.id}}
-    <h3>name: <a href="/foodies/{{ foodie.id }}">{{ foodie.name }}</a></h3>
-    <div ng-if="foodie.thumb.indexOf('missingfoodie') != -1">
-      <img ng-src="{{ foodie.thumb }}" style="height: 80px;"/>
-    </div> 
-    <div ng-if="foodie.thumb.indexOf('missingfoodie') == -1">
-      <img ng-src="{{ foodie.thumb }}" />
-    </div>        
-</div>
-</div>
-</div>
-</div>
+    <p>search foodies: <input ng-model="nameFilter" list="names"></p>
+      <div ng-repeat="foodie in foodies | filter: {name: nameFilter} | orderBy:'name'">
+        <div class="ng-foodie">
+          <div ng-hide="foodie.isCurrentUser"> {{current_foodie.id}} 
+            <h3>name: <a href="/foodies/{{ foodie.id }}">{{ foodie.name }}</a></h3>
+            <div>
+              <div ng-if="foodie.thumb.indexOf('missingfoodie') != -1">
+                <img ng-src="{{ foodie.thumb }}" style="height: 80px;"/>
+              </div>
+            </div>
+              <div ng-if="foodie.thumb.indexOf('missingfoodie') == -1">
+                <img ng-src="{{ foodie.thumb }}" />
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+    </div>
+
 </div>
 </div>

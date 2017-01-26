@@ -21,28 +21,26 @@
 
 <%= form_tag '/posts', method: :post, multipart: true do %>
   <div>
-    <%= text_field_tag :text, "", class: 'u-footer-form__input', placeholder: 'enter your text here' %>
+    <%= text_field_tag :text, "", class: 'u-footer-form__input" type="text', placeholder: 'enter your text here' %>
   </div>
   <div>
-    <%= text_field_tag :address, "", class: 'u-footer-form__input', placeholder: 'enter an address here' %>
+    <%= text_field_tag :address, "", class: 'u-footer-form__input" type="text', :placeholder => "enter an address here" %>
   </div>
-  <div>
-    <%= file_field_tag :image, accept: 'image/*;capture=camera', class: 'u-footer-form__input', placeholder: 'link an image here' %>
+  <div style="margin-top: 10px;">
+    <%= file_field_tag :image, accept: 'image/*;capture=camera', class: 'u-footer-form__input" type="text', placeholder: 'link an image here' %>
   </div>
+  <br>
   <div>
+  <h6>Add a tag</h6>
     <%= select_tag :tag_ids, options_from_collection_for_select(Tag.all, :id, :name), multiple: true %>
   </div>
-  <div class="wpc-contactUs-button">
+<div class="wpc-contactUs-button">
     <button class="u-footer-form__btn u-btn u-btn--small u-btn--grey u-btn--hover-grey">submit</button>
-  </div>
 <br>
 <br>
-<br>
-  <div class="wpc-contactUs-button">
-    <a href='/posts'>back to all posts</a>
-  </div>
+  <a href='/posts' class="u-footer-form__btn u-btn u-btn--small u-btn--grey u-btn--hover-grey">back to all posts</a>
+</div>
 
-</form>
 </div>
 
 <% end %>
