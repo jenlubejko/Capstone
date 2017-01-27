@@ -1,16 +1,25 @@
+<div class="jumbotron">
 <div class="wpc-contactUs-form wpc-contactUs-form-style3">
+
+<div class="container">
   <div class="row">
-    <div class="col-xs-12">
-    <h1>your followers</h1>
-<% @followers.each do |follower| %>
-  <h2><a href="/foodies/<%=follower.id%>"><%= follower.name %></h2>
-  <h3><a href="/foodies/<%=follower.id%>"><%= follower.email %></h3>
-  <% if follower.avatar.url(:thumb).include?("missing") %>
-    <%= image_tag 'missingfoodie.png', class: "profile-image" %>
-  <% else %>
-    <%= image_tag follower.avatar.url(:thumb) %>
-  <% end %>
-<% end %>
+    <div class="col-md-12">
+      <h1>your followers!</h1>
+    </div>
+  </div>
 </div>
+
+<% @followers.each do |follower| %>
+  <div class="foodie-post">
+    <h2><a href="/foodies/<%=follower.id%>"><%= follower.name %></a></h2>
+    <h3><a href="/foodies/<%=follower.id%>"><%= follower.email %></a></h3>
+    <% if follower.avatar.url(:thumb).include?("missing") %>
+      <%= image_tag 'missingfoodie.png', :class => "profile-image" %>
+    <% else %>
+      <%= image_tag follower.avatar.url(:thumb), :class => "profile-image" %>
+    <% end %>
+  </div>
+<% end %>
+
 </div>
 </div>

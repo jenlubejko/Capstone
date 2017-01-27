@@ -12,12 +12,12 @@
   google.maps.event.addDomListener(window, 'load', initialize);
 </script>
 
+<div class="jumbotron">
 <div class="wpc-contactUs-form wpc-contactUs-form-style3">
-  <div class="row">
+
     <div class="col-xs-12">
       <h1>create a new post!</h1>
     </div>
-  </div>
 
 <%= form_tag '/posts', method: :post, multipart: true do %>
   <div>
@@ -39,8 +39,8 @@
 <br>
 <br>
   <a href='/posts' class="u-footer-form__btn u-btn u-btn--small u-btn--grey u-btn--hover-grey">back to all posts</a>
-</div>
 
+</div>
 </div>
 
 <% end %>

@@ -2,7 +2,8 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 .profile-image {
-  max-height: 80px;
+  max-height: 100px;
+  border: 2px solid black;
 }
 
 .ng-foodie {
@@ -11,4 +12,17 @@
 
 .post-comment {
   margin-bottom: 30px;
+}
+.border-thumb {
+  border: 2px solid black;
+}
+
+.spacer-15 {
+  height: 15px;
+}
+
+.foodie-post {
+  background: #ccc;
+  margin: 10px 0px;
+  padding: 15px;
 }

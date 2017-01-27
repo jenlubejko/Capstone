@@ -9,14 +9,15 @@
         <div ng-controller="postsCtrl" ng-init="setup()" id="postsCtrl">
           <a href="/posts/new"><h3>create a new post</h3></a>
           <p>search posts: <input ng-model="textFilter"></p>
-          <div ng-repeat="post in posts | filter: {text: textFilter}">            
+          <div ng-repeat="post in posts | filter: {text: textFilter}" class="foodie-post">            
 
-            <p><a href="/posts/{{ post.id }}">{{ post.text }}</a></p>
-
+            <h2><a href="/posts/{{ post.id }}"><p>{{ post.text }}</p></a></h2>
             <p>address: <a href="/posts/{{ post.id }}">{{ post.address }}</a></p>
-<!--             <p><a href="/posts/{{ post.id }}">{{ post.tag }}</a></p>  --> 
-            <img ng-src="{{ post.image }}", style="height: 120px"/>
-    
+            <p>
+            <a ng-repeat="tag in post.tags" href="/posts?tag={{ tag.name }}">{{ tag.name }}</a> 
+            </p>
+            <img ng-src="{{ post.image }}", style="height: 120px; border: 2px solid black"/>
+            
           </div>
         </div>
       </div>      
@@ -24,7 +25,7 @@
 </div> 
 </div>
 
-<h3>your locations of free food</h3>
+<h3 style="margin-left: 10px">your locations of free food</h3>
     <div id="map"></div>
     <style>
        #map {

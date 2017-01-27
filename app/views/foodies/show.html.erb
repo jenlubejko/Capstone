@@ -1,22 +1,26 @@
 <div class="wpc-contactUs-form wpc-contactUs-form-style3">
   <div class="row">
     <div class="col-xs-12">
+
       <h1>Foodie name: <%= @foodie.name%></h1>
       <h4>Email: <%= @foodie.email%></h4>
+<br>
       <% if @foodie.avatar.url(:thumb).include?("missing") %>
         <%= image_tag 'missingfoodie.png', class: "profile-image" %>
       <% else %>
-        <%= image_tag @foodie.avatar.url(:thumb) %>
+        <%= image_tag @foodie.avatar.url(:thumb), :class => "border-thumb" %>
       <% end %>
 
-<br />
+<br>
 
+<div class="foodie-post">
   <% if current_foodie.followees.include?(@foodie) %>
     <% @foodie.posts.each do |post| %>
-        <h2>Post: <a href="/posts/<%=post.id%>"><%= post.text %></a></h2>
-        <h3><%= post.address %></h3>
+        <h3>Post: <a href="/posts/<%=post.id%>"><%= post.text %></a></h3>
     <% end %>
-<br />
+</div>
+
+<br>
     <!-- <button>Un-Follow</button> -->
     <%= link_to "Un-Follow", "/followers/#{Follower.find_by(follower_id: current_foodie.id, followee_id: @foodie.id).id}", method: :delete, class: "btn btn-warning" %>
   <% else %>
@@ -24,10 +28,8 @@
     <%= link_to "Follow", "/followers?foodie_id=#{@foodie.id}", method: :post, class: "btn btn-success" %>
   <% end %>
 
-<br />
-
-<div>
-  <a href='/foodies'>back to all foodies</a>
+<div class="wpc-contactUs-button">
+  <a href='/foodies'><button style="u-footer-form__btn u-btn u-btn--small u-btn--grey u-btn--hover-grey">back to all foodies</button></a>
 </div>
 
 </div>
